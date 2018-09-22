@@ -5,6 +5,7 @@
  */
 package personaltwitterfeed;
 
+import java.text.DateFormatSymbols;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Scanner;
@@ -39,7 +40,7 @@ public class PersonalTwitterFeed {
             
             System.out.println(tweeterName + "'s Personal Twitter Feed:");
             for(int i = 0; i < numTweets; i++) {
-                System.out.println("- " + tweets[i]);
+                System.out.println("- " + tweets[i] + getCurrentTimeStamp());
             }
             
             System.out.println();
@@ -52,6 +53,23 @@ public class PersonalTwitterFeed {
         }
         
         System.out.println("Your twitter feed is full");
+    }
+    private static String getCurrentTimeStamp(){
+    DateFormatSymbols dateFormatSymbols = new DateFormatSymbols();
+    dateFormatSymbols.setWeekdays(new String[]{
+        "Unused",
+        "Sad Sunday",
+        "Manic Monday",
+        "Thriving Tuesday",
+        "Wet Wednesday",
+        "Total Thursday",
+        "Fat Friday",
+        "Super Saturday",
+});
+    String timeStamp = "HH:mm:ss.SS";
+    SimpleDateFormat simpleDateFormat = new SimpleDateFormat(timeStamp, dateFormatSymbols);
+    String date = simpleDateFormat.format(new Date());
+    return date;
     }
     
 }
